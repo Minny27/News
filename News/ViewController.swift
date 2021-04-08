@@ -80,7 +80,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             }
         }
-        showDetailViewController(controller, sender: nil)
+//        showDetailViewController(controller, sender: nil)
     }
     
     
@@ -91,15 +91,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if let controller = segue.destination as? NewsDetailController {
                 
                 if let news = newsdata {
-                    let indexPath = sender as! IndexPath
-                    let row  = news[indexPath.row]
-                    print("row :: \(row)")
-                    if let r = row as? Dictionary<String, Any> {
-                        if let imageUrl = r["urlToImage"] as? String {
-                            controller.imageUrl =  imageUrl
-                        }
-                        if let desc = r["description"] as? String {
-                            controller.desc = desc
+                    if let indexPath = TableViewMain.indexPathForSelectedRow {
+                        let row  = news[indexPath.row]
+                        print("row :: \(row)")
+                        if let r = row as? Dictionary<String, Any> {
+                            if let imageUrl = r["urlToImage"] as? String {
+                                controller.imageUrl =  imageUrl
+                            }
+                            if let desc = r["description"] as? String {
+                                controller.desc = desc
+                            }
                         }
                     }
                 }
