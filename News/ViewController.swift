@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var newsdata : Array<Dictionary<String, Any>>?
     
+    // News Api에서의 Json data 가져오기
     func getNews() {
         let task = URLSession.shared.dataTask(with: URL(string: "https://newsapi.org/v2/top-headlines?country=kr&category=business&apiKey=712563d999c042a2a8ed4f9e47536561")!) { (data, respones, error) in
             // Json Parsing
